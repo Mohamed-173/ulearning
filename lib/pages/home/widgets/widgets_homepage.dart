@@ -108,7 +108,7 @@ Widget searchView() {
           child: Container(
             decoration: BoxDecoration(
               color: AppColors.primaryElement,
-              borderRadius: BorderRadius.circular(5.r),
+              borderRadius: BorderRadius.circular(15.r),
             ),
             height: 40.h,
             width: 40.w,
@@ -116,8 +116,8 @@ Widget searchView() {
               child: Image.asset(
                 "assets/icons/options.png",
                 fit: BoxFit.contain,
-                width: 30,
-                height: 30,
+                width: 25,
+                height: 25,
               ),
             ),
           ),
@@ -153,6 +153,7 @@ Widget homeTextField() {
   );
 }
 
+/// for slider view in home page with dot indicator
 Widget SliderView(BuildContext context) {
   return BlocBuilder<HomePageBloc, HomePageState>(
     builder: (context, state) {
@@ -195,6 +196,7 @@ Widget SliderView(BuildContext context) {
   );
 }
 
+/// slider widget for less write code
 Container _sliderContainer({String path = "assets/icons/art.png"}) {
   return Container(
     height: 160.h,
@@ -203,6 +205,107 @@ Container _sliderContainer({String path = "assets/icons/art.png"}) {
       image: DecorationImage(
         fit: BoxFit.fill,
         image: AssetImage(path),
+      ),
+    ),
+  );
+}
+
+// menw view for shoing items
+Widget MenuView() {
+  return Container(
+    width: 325.w,
+    margin: EdgeInsets.only(top: 15.h),
+    child: Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _reusableTextHomePage(text: "Choice your course"),
+            GestureDetector(
+              onTap: () {},
+              child: _reusableTextHomePage(
+                text: "See All",
+                color: AppColors.primaryThirdElementText,
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            _reusableMenuText(text: "All"),
+            _reusableMenuText(
+              text: "Populer",
+              backgroundColor: AppColors.primaryBackground,
+              textColor: AppColors.primaryThirdElementText,
+            ),
+            _reusableMenuText(
+              text: "Newst",
+              backgroundColor: AppColors.primaryBackground,
+              textColor: AppColors.primaryThirdElementText,
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _reusableMenuText({
+  String text = 'menuText',
+  Color backgroundColor = AppColors.primaryElement,
+  Color textColor = AppColors.primaryBackground,
+}) {
+  return Container(
+    margin: EdgeInsets.only(top: 20.h, right: 20.w),
+    child: Row(
+      children: [
+        Container(
+          // height: 20.h,
+          // width: 50.w,
+          padding: EdgeInsets.only(
+            bottom: 5.h,
+            top: 5.h,
+            left: 15.w,
+            right: 15.w,
+          ),
+          decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(7.r),
+              border: Border.all(
+                color: backgroundColor,
+                width: 1,
+              )),
+          child: Center(
+            child: _reusableTextHomePage(
+              text: text,
+              color: textColor,
+              fontSize: 12,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+///by default [fontSize] is 18.sp
+///
+/// and the font [fontWeight] is [FontWeight.bold]
+Container _reusableTextHomePage({
+  String text = 'reusableText',
+  Color color = AppColors.primaryText,
+  double fontSize = 18,
+  FontWeight fontWeight = FontWeight.bold,
+}) {
+  return Container(
+    child: Text(
+      text,
+      style: TextStyle(
+        color: color,
+        fontWeight: fontWeight,
+        fontSize: fontSize.sp,
       ),
     ),
   );

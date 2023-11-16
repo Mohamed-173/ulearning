@@ -42,6 +42,7 @@ class _HomePageViewState extends State<HomePageView> {
                   height: 20.h,
                 ),
                 SliderView(context),
+                MenuView(),
               ],
             ),
           ),
