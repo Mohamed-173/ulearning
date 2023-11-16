@@ -91,7 +91,7 @@ class _RegisterState extends State<Register> {
                           AuthButtonType.login,
                           () async {
                             // test for get back to welcome screen
-                            Global.storageServices.setFirstFalse();
+                            // Global.storageServices.setFirstFalse();
                             await RegisterController(context: context)
                                 .handleRegisteration("register");
                           },

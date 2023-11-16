@@ -7,10 +7,50 @@ import '../../../common/values/colors.dart';
 Widget buildPage(int index) {
   List<Widget> _widgets = [
     HomePageView(),
-    Center(child: Text("Search")),
-    Center(child: Text("Course")),
-    Center(child: Text("Chat")),
-    Center(child: Text("Profile")),
+    Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+            width: 200.w,
+            height: 200.h,
+            child: Image.asset("assets/icons/unconst.png")),
+        Text("Search"),
+      ],
+    )),
+    Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+            width: 200.w,
+            height: 200.h,
+            child: Image.asset("assets/icons/unconst.png")),
+        Text("Course"),
+      ],
+    )),
+    Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+            width: 200.w,
+            height: 200.h,
+            child: Image.asset("assets/icons/unconst.png")),
+        Text("Chat"),
+      ],
+    )),
+    Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+            width: 200.w,
+            height: 200.h,
+            child: Image.asset("assets/icons/unconst.png")),
+        Text("Profile"),
+      ],
+    )),
   ];
 
   return _widgets[index];

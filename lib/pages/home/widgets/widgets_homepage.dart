@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:uleaningapp/common/widgets/common_widgets.dart';
+
 import 'package:uleaningapp/pages/home/bloc/home_page_bloc.dart';
 import 'package:uleaningapp/pages/home/bloc/home_page_event.dart';
 
@@ -252,11 +252,10 @@ Widget MenuView() {
   );
 }
 
-Widget _reusableMenuText({
-  String text = 'menuText',
-  Color backgroundColor = AppColors.primaryElement,
-  Color textColor = AppColors.primaryBackground,
-}) {
+Widget _reusableMenuText(
+    {String text = 'menuText',
+    Color backgroundColor = AppColors.primaryElement,
+    Color textColor = AppColors.primaryBackground}) {
   return Container(
     margin: EdgeInsets.only(top: 20.h, right: 20.w),
     child: Row(
@@ -293,12 +292,11 @@ Widget _reusableMenuText({
 ///by default [fontSize] is 18.sp
 ///
 /// and the font [fontWeight] is [FontWeight.bold]
-Container _reusableTextHomePage({
-  String text = 'reusableText',
-  Color color = AppColors.primaryText,
-  double fontSize = 18,
-  FontWeight fontWeight = FontWeight.bold,
-}) {
+Container _reusableTextHomePage(
+    {String text = 'reusableText',
+    Color color = AppColors.primaryText,
+    double fontSize = 18,
+    FontWeight fontWeight = FontWeight.bold}) {
   return Container(
     child: Text(
       text,
