@@ -1,7 +1,8 @@
 # ulearning
 make app with ahmed and course and growing my skill with ui and firebase auth and laravel
 
-<a id="raw-url" href="[https://raw.githubusercontent.com/github-username/project/master/filename](https://github.com/Mohamed-173/ulearning/blob/main/assets/versions/v0.3%20ulearning.apk)">Download Android APK for Test</a>
+
+<a href="/assets/versions/v0.3%20ulearning.apk" download>Click here to download  Android apk for Test</a>
 
 <img
   src="/assets/git_image/1u.png"
