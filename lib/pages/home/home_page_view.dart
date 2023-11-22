@@ -20,29 +20,57 @@ class _HomePageViewState extends State<HomePageView> {
           appBar: buildAppBar(),
           body: Container(
             margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+            child: CustomScrollView(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              slivers: [
                 // first child  big text
-                homePageText(
-                  "Hello",
-                  color: AppColors.primaryThirdElementText,
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    "Hello",
+                    color: AppColors.primaryThirdElementText,
+                  ),
                 ),
                 //second child  big text
-                homePageText(
-                  "Mohamed",
-                  marginTop: 5.h,
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    "Mohamed",
+                    marginTop: 5.h,
+                  ),
                 ),
-                SizedBox(
-                  height: 20.h,
+                SliverPadding(
+                  padding: EdgeInsets.only(top: 20.h),
                 ),
                 //third child search view
-                searchView(),
-                SizedBox(
-                  height: 20.h,
+                SliverToBoxAdapter(child: searchView(context: context)),
+                SliverPadding(padding: EdgeInsets.only(top: 20.h)),
+                SliverToBoxAdapter(child: SliderView(context)),
+                SliverToBoxAdapter(child: MenuView()),
+                SliverPadding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 18.h, horizontal: 0.w),
+                  sliver: SliverGrid(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                      childAspectRatio: 1.6,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: 4,
+                      (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {},
+                          child: courseGrid(
+                            imagePath: index.isOdd
+                                ? "assets/icons/Image1.png"
+                                : "assets/icons/Image2.png",
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ),
-                SliderView(context),
-                MenuView(),
               ],
             ),
           ),

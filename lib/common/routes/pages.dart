@@ -25,17 +25,17 @@ class AppPages {
     return [
       PageEntity(
         route: AppRoutesName.initial,
-        page: WelcomePageView(),
+        page: const WelcomePageView(),
         bloc: BlocProvider(create: (_) => WelcomBloc()),
       ),
       PageEntity(
         route: AppRoutesName.signIn,
-        page: SignIn(),
+        page: const SignIn(),
         bloc: BlocProvider(create: (_) => SignInBloc()),
       ),
       PageEntity(
         route: AppRoutesName.register,
-        page: Register(),
+        page: const Register(),
         bloc: BlocProvider(create: (_) => RegisterBloc()),
       ),
       PageEntity(
@@ -45,13 +45,13 @@ class AppPages {
       ),
       PageEntity(
         route: AppRoutesName.homePageView,
-        page: HomePageView(),
+        page: const HomePageView(),
         bloc: BlocProvider(create: (_) => HomePageBloc()),
       ),
     ];
   }
 
-// return all blocProviders as list
+// return all blocProviders as list for providing
   static List<dynamic> allBlocProviders(BuildContext context) {
     List<dynamic> blocProvider = <dynamic>[];
 

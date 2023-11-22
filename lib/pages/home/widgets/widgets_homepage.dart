@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,7 +67,7 @@ Widget homePageText(String text,
   );
 }
 
-Widget searchView() {
+Widget searchView({required BuildContext context}) {
   return Container(
     height: 40.h,
     // width: 300.w,
@@ -91,11 +93,19 @@ Widget searchView() {
                   width: 16.w,
                   child: Image.asset("assets/icons/search.png"),
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 5.w),
+                SizedBox(
                   height: 40.h,
                   width: 240.w,
-                  child: Center(child: homeTextField()),
+                  child: Center(
+                    child: homeTextField(
+                      focusNode: FocusNode(),
+                      onSubmet: (_) {
+                        // FocusScope.of(context).requestFocus(FocusNode());
+                        // FocusManager.instance.primaryFocus!.unfocus();
+                        log("onSubmeted");
+                      },
+                    ),
+                  ),
                 )
               ],
             ),
@@ -127,15 +137,23 @@ Widget searchView() {
   );
 }
 
-Widget homeTextField() {
+Widget homeTextField({Function(String)? onSubmet, FocusNode? focusNode}) {
   return Container(
     // color: Colors.red,
     height: 40.h,
     width: 240.w,
     child: TextFormField(
       onChanged: (value) {},
-      keyboardType: TextInputType.text,
+      focusNode: focusNode,
+
+      keyboardType: TextInputType.multiline,
+      onFieldSubmitted: onSubmet,
+      // onTap: () {
+      //   print("object");
+      // },
+
       decoration: const InputDecoration(
+        contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 6),
         border: InputBorder.none,
         hintText: "Search Your Course",
         hintStyle: TextStyle(
@@ -292,19 +310,79 @@ Widget _reusableMenuText(
 ///by default [fontSize] is 18.sp
 ///
 /// and the font [fontWeight] is [FontWeight.bold]
-Container _reusableTextHomePage(
+Widget _reusableTextHomePage(
     {String text = 'reusableText',
     Color color = AppColors.primaryText,
     double fontSize = 18,
     FontWeight fontWeight = FontWeight.bold}) {
+  return Text(
+    text,
+    style: TextStyle(
+      color: color,
+      fontWeight: fontWeight,
+      fontSize: fontSize.sp,
+    ),
+  );
+}
+
+// Course Grid  View Ui
+Widget courseGrid({String imagePath = "assets/icons/Image2.png"}) {
   return Container(
-    child: Text(
-      text,
-      style: TextStyle(
-        color: color,
-        fontWeight: fontWeight,
-        fontSize: fontSize.sp,
+    padding: EdgeInsets.all(
+      12.w,
+    ),
+    decoration: BoxDecoration(
+      color: Colors.red,
+      borderRadius: BorderRadius.circular(15.r),
+      image: DecorationImage(
+        image: AssetImage(
+          imagePath,
+        ),
+        fit: BoxFit.fill,
       ),
     ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Best Course For IT and Engineering",
+          // for how much line can have
+          maxLines: 1,
+          // if text over flow it is fade it
+          overflow: TextOverflow.fade,
+          // align text for left
+          textAlign: TextAlign.left,
+          // for not let wraping to second line
+          softWrap: false,
+          style: TextStyle(
+            color: AppColors.primaryElementText,
+            fontWeight: FontWeight.bold,
+            fontSize: 12.sp,
+          ),
+        ),
+        SizedBox(
+          height: 5.h,
+        ),
+        Text(
+          "Flutter Best Course",
+          // for how much line can have
+          maxLines: 1,
+          // if text over flow it is fade it
+          overflow: TextOverflow.fade,
+          // align text for left
+          textAlign: TextAlign.left,
+          // for not let wraping to second line
+          softWrap: false,
+          style: TextStyle(
+            color: AppColors.primaryFourElementText,
+            fontWeight: FontWeight.bold,
+            fontSize: 8.sp,
+          ),
+        ),
+      ],
+    ),
+    // height: 100,
+    // width: 100,
   );
 }

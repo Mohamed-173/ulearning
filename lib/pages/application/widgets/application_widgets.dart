@@ -1,56 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:uleaningapp/pages/home/home_page_view.dart';
+import 'package:uleaningapp/pages/profile/profile_page_view.dart';
 
 import '../../../common/values/colors.dart';
 
 Widget buildPage(int index) {
   List<Widget> _widgets = [
-    HomePageView(),
+    //first page home page
+    const HomePageView(),
+    //second page
     Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        SizedBox(
             width: 200.w,
             height: 200.h,
             child: Image.asset("assets/icons/unconst.png")),
-        Text("Search"),
+        const Text(
+          "Search",
+        ),
       ],
     )),
+    //third page
     Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        SizedBox(
             width: 200.w,
             height: 200.h,
             child: Image.asset("assets/icons/unconst.png")),
-        Text("Course"),
+        const Text("Course"),
       ],
     )),
+    //fourth page
     Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        SizedBox(
             width: 200.w,
             height: 200.h,
             child: Image.asset("assets/icons/unconst.png")),
-        Text("Chat"),
+        const Text("Chat"),
       ],
     )),
-    Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-            width: 200.w,
-            height: 200.h,
-            child: Image.asset("assets/icons/unconst.png")),
-        Text("Profile"),
-      ],
-    )),
+    // fifth page profile page
+    const ProfilePageView()
   ];
 
   return _widgets[index];
