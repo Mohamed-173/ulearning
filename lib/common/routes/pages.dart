@@ -10,6 +10,8 @@ import 'package:uleaningapp/pages/application/application_page.dart';
 import 'package:uleaningapp/pages/application/bloc/app_bloc.dart';
 import 'package:uleaningapp/pages/home/bloc/home_page_bloc.dart';
 import 'package:uleaningapp/pages/home/home_page_view.dart';
+import 'package:uleaningapp/pages/profile/settings/bloc/setting_bloc.dart';
+import 'package:uleaningapp/pages/profile/settings/setting_page.dart';
 
 import 'package:uleaningapp/pages/register/bloc/register_bloc.dart';
 import 'package:uleaningapp/pages/register/register_view.dart';
@@ -47,6 +49,11 @@ class AppPages {
         route: AppRoutesName.homePageView,
         page: const HomePageView(),
         bloc: BlocProvider(create: (_) => HomePageBloc()),
+      ),
+      PageEntity(
+        route: AppRoutesName.settingPage,
+        page: const SettingPage(),
+        bloc: BlocProvider(create: (_) => SettingBloc()),
       ),
     ];
   }

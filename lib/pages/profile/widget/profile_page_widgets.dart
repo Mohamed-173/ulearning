@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:uleaningapp/common/routes/name.dart';
 import 'package:uleaningapp/common/values/colors.dart';
+import 'package:uleaningapp/common/widgets/common_widgets.dart';
 
 AppBar buildProfileAppBar() {
   return AppBar(
@@ -14,13 +16,7 @@ AppBar buildProfileAppBar() {
             width: 20.w,
             child: Image.asset("assets/icons/menu.png"),
           ),
-          const Text(
-            "Profile",
-            style: TextStyle(
-              color: AppColors.primaryText,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          reusableText("Profile"),
           SizedBox(
             height: 20.h,
             width: 20.w,
@@ -67,13 +63,25 @@ var imageInfo = <String, String>{
   "Remainders": "cube.png",
 };
 // list view setting
-Widget buildListView() {
+Widget buildListView(BuildContext context) {
   return Column(
     children: [
       ...List.generate(
         imageInfo.length,
         (index) => GestureDetector(
+          //  GestureDetector not workin in empty place container to fix this use behavior
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            if (index == 0) {
+              Navigator.pushNamed(
+                context,
+                AppRoutesName.settingPage,
+              );
+            }
+          },
           child: Container(
+            margin: EdgeInsets.only(top: 10.h),
+            // color: Colors.amber,
             padding: EdgeInsets.only(bottom: 15.h),
             child: Row(
               children: [
@@ -90,12 +98,8 @@ Widget buildListView() {
                   ),
                 ),
                 SizedBox(width: 15.w),
-                Text(
+                reusableText(
                   imageInfo.keys.elementAt(index),
-                  style: TextStyle(
-                    color: AppColors.primaryText,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ],
             ),

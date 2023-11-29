@@ -4,6 +4,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:uleaningapp/common/widgets/common_widgets.dart';
 
 import 'package:uleaningapp/pages/home/bloc/home_page_bloc.dart';
 import 'package:uleaningapp/pages/home/bloc/home_page_event.dart';
@@ -239,11 +240,11 @@ Widget MenuView() {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _reusableTextHomePage(text: "Choice your course"),
+            reusableText("Choice your course"),
             GestureDetector(
               onTap: () {},
-              child: _reusableTextHomePage(
-                text: "See All",
+              child: reusableText(
+                "See All",
                 color: AppColors.primaryThirdElementText,
                 fontSize: 12,
               ),
@@ -295,8 +296,8 @@ Widget _reusableMenuText(
                 width: 1,
               )),
           child: Center(
-            child: _reusableTextHomePage(
-              text: text,
+            child: reusableText(
+              text,
               color: textColor,
               fontSize: 12,
             ),
@@ -310,20 +311,6 @@ Widget _reusableMenuText(
 ///by default [fontSize] is 18.sp
 ///
 /// and the font [fontWeight] is [FontWeight.bold]
-Widget _reusableTextHomePage(
-    {String text = 'reusableText',
-    Color color = AppColors.primaryText,
-    double fontSize = 18,
-    FontWeight fontWeight = FontWeight.bold}) {
-  return Text(
-    text,
-    style: TextStyle(
-      color: color,
-      fontWeight: fontWeight,
-      fontSize: fontSize.sp,
-    ),
-  );
-}
 
 // Course Grid  View Ui
 Widget courseGrid({String imagePath = "assets/icons/Image2.png"}) {

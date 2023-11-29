@@ -30,4 +30,8 @@ class StorageServices {
   Future<bool> setFirstFalse() {
     return _pref.setBool(AppConst.STORAGE_DEVICE_OPEN_FIRST_TIME, false);
   }
+
+  Future<bool> removeUser(String key) {
+    return _pref.remove(key);
+  }
 }

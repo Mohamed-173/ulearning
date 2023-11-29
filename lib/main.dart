@@ -30,6 +30,11 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             // primarySwatch: Colors.blue,
             appBarTheme: const AppBarTheme(
+              // foreground for secondary child color like {text} and {icons}
+              foregroundColor: AppColors.primaryText,
+              // toolbarTextStyle: TextStyle(
+              //   color: AppColors.primaryText,
+              // ),
               iconTheme: IconThemeData(
                 color: AppColors.primaryText,
               ),
@@ -37,6 +42,7 @@ class MyApp extends StatelessWidget {
               centerTitle: true,
               elevation: 0,
             ),
+
             colorScheme: ColorScheme.fromSwatch()
                 .copyWith(secondary: AppColors.primaryElement),
           ),

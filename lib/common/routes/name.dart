@@ -9,4 +9,6 @@ class AppRoutesName {
   static const register = '/register';
   // Home Page State
   static const homePageView = '/homePageView';
+  // Setting Page
+  static const settingPage = '/settingpage';
 }

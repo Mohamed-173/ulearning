@@ -7,9 +7,9 @@ import 'package:uleaningapp/pages/register/bloc/register_bloc.dart';
 import 'package:uleaningapp/pages/register/bloc/register_event.dart';
 import 'package:uleaningapp/pages/register/bloc/register_state.dart';
 import 'package:uleaningapp/pages/register/register_controller.dart';
+import '../register/widget/register_widget.dart';
 
 import '../../common/constant/enums.dart';
-import '../../common/widgets/common_widgets.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -107,4 +107,48 @@ class _RegisterState extends State<Register> {
       );
     });
   }
+}
+
+Widget buildLogInAndRegButton(
+  String buttonName,
+  AuthButtonType buttonType,
+  Function()? func,
+) {
+  return GestureDetector(
+    onTap: func,
+    child: Container(
+      // margin: EdgeInsets.only(top: 40.h),
+      decoration: BoxDecoration(
+        color: buttonType == AuthButtonType.login
+            ? AppColors.primaryElement
+            : AppColors.primaryBackground,
+        borderRadius: BorderRadius.circular(15.r),
+        border: buttonType == AuthButtonType.login
+            //this check for if not login button dont set border
+            ? null
+            : Border.all(color: AppColors.primaryFourElementText),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: 1,
+            blurRadius: 2,
+            offset: const Offset(0, 1),
+            color: Colors.grey.withOpacity(0.1),
+          )
+        ],
+      ),
+      width: 325.w,
+      height: 35.h,
+      child: Center(
+          child: Text(
+        buttonName,
+        style: TextStyle(
+          color: buttonType == AuthButtonType.login
+              ? AppColors.primaryBackground
+              : AppColors.primaryText,
+          fontWeight: FontWeight.normal,
+          fontSize: 16.sp,
+        ),
+      )),
+    ),
+  );
 }
